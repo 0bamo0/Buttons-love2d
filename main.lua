@@ -7,9 +7,13 @@ function love.load()
 end
 
 function love.update(dt)
-    Buttons:checkHover()
+    Buttons.checkHover()
 end
 
 function love.draw()
-    Buttons:drawAll()
+    Buttons.drawAll()
+end
+
+function love.keypressed(k)
+    
 end

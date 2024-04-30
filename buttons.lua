@@ -9,22 +9,28 @@ function Buttons.new(x,y,w,h,label)
     instance.width = w
     instance.height = h
     instance.label = label
-    instance.visible = true
+    instance.isHovered = false
     table.insert(ActiveButtons, instance)
 end
 
-function Buttons:checkHover()
+function Buttons.checkHover()
     for _,Buttons in ipairs(ActiveButtons) do
         local mx,my = love.mouse.getPosition()
         if mx > Buttons.x and mx < Buttons.x + Buttons.width and my > Buttons.y and my < Buttons.y + Buttons.height then
-            print(Buttons.label .. mx)
+            print(Buttons.label , mx , Buttons.isHovered)
+            Buttons.isHovered = true
         end
+        print(Buttons.isHovered)
     end
 end
 
-function Buttons:drawAll()
+function Buttons.drawAll()
     for _, button in ipairs(ActiveButtons) do
-        love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
+        if Buttons.isHovered then
+            love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
+        else
+            love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
+        end
     end
 end
 
