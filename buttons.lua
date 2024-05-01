@@ -17,17 +17,17 @@ function Buttons.checkHover()
     for _,Buttons in ipairs(ActiveButtons) do
         local mx,my = love.mouse.getPosition()
         if mx > Buttons.x and mx < Buttons.x + Buttons.width and my > Buttons.y and my < Buttons.y + Buttons.height then
-            print(Buttons.label , mx , Buttons.isHovered)
             Buttons.isHovered = true
+        else
+            Buttons.isHovered = false
         end
-        print(Buttons.isHovered)
     end
 end
 
 function Buttons.drawAll()
     for _, button in ipairs(ActiveButtons) do
-        if Buttons.isHovered then
-            love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
+        if button.isHovered == true then
+            love.graphics.rectangle("line" , button.x , button.y , button.width , button.height)
         else
             love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
         end
