@@ -14,13 +14,13 @@ function Buttons.new(x,y,w,h,label)
 end
 
 
-function Buttons.checkHover()
-    for _,Buttons in ipairs(ActiveButtons) do
+function Buttons.update(dt)
+    for _,button in ipairs(ActiveButtons) do
         local mx,my = love.mouse.getPosition()
-        if mx > Buttons.x and mx < Buttons.x + Buttons.width and my > Buttons.y and my < Buttons.y + Buttons.height then
-            Buttons.isHovered = true
+        if mx > button.x and mx < button.x + button.width and my > button.y and my < button.y + button.height then
+            button.isHovered = true
         else
-            Buttons.isHovered = false
+            button.isHovered = false
         end
     end
 end
@@ -31,6 +31,14 @@ function Buttons.drawAll()
             love.graphics.rectangle("line" , button.x , button.y , button.width , button.height)
         else
             love.graphics.rectangle("fill" , button.x , button.y , button.width , button.height)
+        end
+    end
+end
+
+function Buttons:pressed(x,y,k)
+    for _, button in ipairs(ActiveButtons) do
+        if x > button.x and x < button.x + button.width and y > button.y and y < button.y + button.height then
+            print(button.label)
         end
     end
 end
