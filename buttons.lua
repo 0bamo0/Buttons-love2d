@@ -13,6 +13,7 @@ function Buttons.new(x,y,w,h,label)
     table.insert(ActiveButtons, instance)
 end
 
+
 function Buttons.checkHover()
     for _,Buttons in ipairs(ActiveButtons) do
         local mx,my = love.mouse.getPosition()

@@ -1,9 +1,12 @@
 Buttons = require('buttons')
 
 function love.load()
-    Buttons.new(10 , 300 , 50 , 60 , "Start")
-    Buttons.new(500 , 300 , 100 , 60 , "Load")
-    Buttons.new(350 , 300 , 40 , 60 , "Exit")
+    local m = 50
+    local y = 0
+    for i = 1, 3, 1 do
+        Buttons.new(300 , y + 50 , 50 , 50)
+        y = y + 50 + m
+    end
 end
 
 function love.update(dt)
